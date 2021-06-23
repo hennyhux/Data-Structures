@@ -3,18 +3,56 @@
 a pointer to the next node. Last node points to null*/
 import java.util.Random;
 
-/*Defined class for a singular node*/
-class Node
-{
-    public int data;
-    public Node next;
-}
 
 public class SinglyLinkedList
 {
+    /*Defined class for a singular node*/
+    public static class Node
+    {
+        private int data;
+        private Node next;
+
+        public Node()
+        {
+            this.next = null;
+            this.data = 0;
+        }
+
+        public Node(int key)
+        {
+            this.next = null;
+            this.data = key;
+        }
+
+        public Node getNext()
+        {
+            return next;
+        }
+
+        public void setNext()
+        {
+            this.next = next;
+        }
+
+        public int getKey()
+        {
+            return data;
+        }
+
+    }
+
 
     /*Head of the node*/
     private Node head;
+
+
+    /**
+     * Default constructor
+     */
+    public SinglyLinkedList()
+    {
+        this.head = null;
+    }
 
     /**
      * Checks if a list is empty
@@ -44,35 +82,42 @@ public class SinglyLinkedList
     }
 
     /**
-     * Insert the node onto the head of the list
-     * @param data data to be inserted onto the head
+     * Inserts the node into the linked list
+     * @param data data to be inserted
      */
-    public void insertHead(int data)
+    public void insert(int data)
     {
         Node newNode = new Node();
         newNode.data = data;
         newNode.next = null;
-        head = newNode;
-    }
 
-    /**
-     * Inserts a new node
-     * @param data the data to be inserted
-     */
-    public void insertNode(int data)
-    {
-        Node newNode = new Node();
-        Node copyNode = head;
-        newNode.data = data;
-        newNode.next = null;
-
-        while (copyNode.next != null)
+        if (checkEmpty())
         {
-            copyNode = copyNode.next;
-        }
+            this.head = newNode;
 
-        copyNode.next = newNode;
+        } else {
+            Node iterateNode = head;
+            while (iterateNode.next != null)
+            {
+                iterateNode = iterateNode.next;
+            }
+
+            iterateNode.next = newNode;
+        }
     }
+
+    public void hashInsert(int key)
+    {
+        if (checkEmpty())
+        {
+            this.head = new Node();
+        }
+    }
+
+
+
+
+
 
     /**
      * Prints out the entire lsit
@@ -101,13 +146,12 @@ public class SinglyLinkedList
     {
         SinglyLinkedList newList = new SinglyLinkedList();
         Random rand = new Random();
-        newList.insertHead(1);
 
         assert(!newList.checkEmpty());
 
         for (int i = 0; i < rand.nextInt(200); i++)
         {
-            newList.insertNode(rand.nextInt(100));
+            newList.insert(rand.nextInt(100));
         }
 
         newList.printList();
