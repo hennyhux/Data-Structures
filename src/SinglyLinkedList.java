@@ -115,10 +115,6 @@ public class SinglyLinkedList
     }
 
 
-
-
-
-
     /**
      * Prints out the entire lsit
      */
