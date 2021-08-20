@@ -52,7 +52,7 @@ public class SinglyLinkedList
     public SinglyLinkedList()
     {
         this.head = null;
-    }
+    }   
 
     /**
      * Checks if a list is empty
