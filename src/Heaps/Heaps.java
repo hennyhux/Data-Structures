@@ -1,3 +1,5 @@
+package Heaps;
+
 public class Heaps {
 
     /*Size of Heap*/

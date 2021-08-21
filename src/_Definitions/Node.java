@@ -1,6 +1,6 @@
 /*Defined class for a node, for use in trees
 * Author: Henry Zhang*/
-package definitions;
+package _Definitions;
 
 public class Node {
     /*Node data*/
