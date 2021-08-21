@@ -1,9 +1,9 @@
-import definitions.Node;
+package BinarySearchTrees;
+
+import _Definitions.Node;
 
 /*In this implementation of a binary search tree, I will be taking a more mathematical approach*/
-public class BinarySearchTree {
-
-
+public class IterativeBST {
 
     /*The root of the current BST*/
     private Node root;
@@ -11,11 +11,9 @@ public class BinarySearchTree {
     /**
      * Default constructor
      */
-    public BinarySearchTree()
-    {
+    public IterativeBST() {
         root = null;
     }
-
 
     /**
      * Helper function to determine that appropriate parent for insertion
@@ -23,8 +21,7 @@ public class BinarySearchTree {
      * @param z the data being inserted, or the child node
      * @return the parent of the child node
      */
-    private Node locateParent(int z)
-    {
+    private Node locateParent(int z) {
         /*y corresponds to parent node of z*/
         Node y = null;
         Node x = this.root;
@@ -44,8 +41,7 @@ public class BinarySearchTree {
      * ASYMPTOTIC COMPLEXITY: T(n) is in theta(h)
      * @param z the node to be inserted
      */
-    public void treeInsert(Node z)
-    {
+    public void treeInsert(Node z) {
         Node y = locateParent(z.key);
         z.parent = y;
 
@@ -60,8 +56,7 @@ public class BinarySearchTree {
      * Inserts the new node and updates the size
      * @param z
      */
-    public void insertAndUpdateSize(Node z)
-    {
+    public void insertAndUpdateSize(Node z) {
         treeInsert(z);
 
     }
@@ -71,8 +66,7 @@ public class BinarySearchTree {
      * ASYMPTOTIC COMPLEXITY: T(n) is in theta(n) *guaranteed to visit every node*
      * @param x the root node
      */
-    public void inOrderTreeWalk(Node x)
-    {
+    public void inOrderTreeWalk(Node x) {
         if (x != null)
         {
             inOrderTreeWalk(x.left);
@@ -89,8 +83,7 @@ public class BinarySearchTree {
      * @param K the data that is being searched for
      * @return true if the node is found, false otherwise
      */
-    public boolean treeSearch(Node x , int K)
-    {
+    public boolean treeSearch(Node x , int K) {
        if (x.key == K) return true;
 
        else if (K < x.key ) return treeSearch(x.left, K);
@@ -104,14 +97,13 @@ public class BinarySearchTree {
 
     }
 
-
     /**
      * Main function
      * @param args command line args
      */
     public static void main (String[] args)
     {
-        BinarySearchTree tree = new BinarySearchTree();
+        IterativeBST tree = new IterativeBST();
         tree.treeInsert(new Node(15));
         tree.treeInsert(new Node(6));
         tree.treeInsert(new Node(18));
@@ -125,8 +117,5 @@ public class BinarySearchTree {
         tree.treeInsert(new Node(9));
 
         tree.inOrderTreeWalk(tree.root);
-
     }
-
-
 }
