@@ -1,11 +1,11 @@
 /*Author: Henry Zhang*/
 /*Some additional notes on hash tables:
-* k mod m m is preferably prime to ensure maximum efficiency*/
-
+* k mod m; m is preferably prime to ensure maximum efficiency*/
+package HashTables;
+import LinkedList.SinglyLinkedList;
 import java.util.Scanner;
 
 public class HashTables {
-
     private int hashSize;
     private LinkedList[] buckets;
 
@@ -20,15 +20,14 @@ public class HashTables {
             buckets[i] = new LinkedList();
 
         }
-
         this.hashSize = hashSize;
     }
 
     /**
-     * Hash function...
+     * Hash function
      *
      * @param key
-     * @return
+     * @return the hash value of the key
      */
     public int hashFunction(int key) {
         int hash = key % hashSize;
@@ -36,18 +35,31 @@ public class HashTables {
         return hash;
     }
 
-
+    /**
+     * Insert the item into the hashtable according to
+     * the hash function
+     *
+     * @param key
+     * @return
+     */
     public int insertHash(int key) {
         int hash = hashFunction(key);
         buckets[hash].insert(key);
         return 0;
     }
 
+    /**
+     * Delete an item in the hashtable according to the hash function
+     * @param key
+     */
     public void deleteHash(int key) {
         int hash = hashFunction(key);
         buckets[hash].delete(key);
     }
 
+    /**
+     * Print out the hashtable
+     */
     public void displayHashTable() {
         for (int i = 0; i < hashSize; i++) {
             System.out.printf("Bucket %d : ", i);
@@ -55,7 +67,6 @@ public class HashTables {
         }
 
     }
-
 
     public static class LinkedList {
         private Node first;
@@ -161,8 +172,7 @@ public class HashTables {
         public void setNext(Node next) {
             this.next = next;
         }
-
-        }
+    }
 
         public static void main(String args[]) {
             int choice, key;
@@ -202,7 +212,6 @@ public class HashTables {
                         return;
                     }
                 }
-
             }
         }
     }
